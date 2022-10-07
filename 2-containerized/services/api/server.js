@@ -12,6 +12,7 @@ console.log("the URL of the Xray is " + XrayURL);
 app.get('/api/users', (req, res) => {
   var segment = AWSXRay.getSegment();
   console.log("The segment is " + segment);
+  res.set("Access-Control-Allow-Origin", "https://n6td3i9iug.execute-api.eu-west-1.amazonaws.com");
   res.send(db.users);
 });
 
