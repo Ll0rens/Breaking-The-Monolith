@@ -23,14 +23,10 @@ app.get('/api/threads/:threadId', (req, res) => {
 });
 
 app.get('/api', (req, res) => {
-  var segment = AWSXRay.getSegment();
-  console.log("The segment is " + segment);
   res.send("API ready to receive requests")
 })
 
 app.get('/', (req, res) => {
-  var segment = AWSXRay.getSegment();
-  console.log("The segment is " + segment);
   res.send("Ready to receive requests")
 })
 
