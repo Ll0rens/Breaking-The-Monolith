@@ -5,7 +5,7 @@ const app = express();
 const XrayURL = process.env.XRAY_URL;
 
 AWSXRay.setDaemonAddress(XrayURL);
-app.use(AWSXRay.express.openSegment('Microservice'));
+app.use(AWSXRay.express.openSegment('Threads'));
 console.log("the URL of the Xray is " + XrayURL);
 
 //Endpoints
