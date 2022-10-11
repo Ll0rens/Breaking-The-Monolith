@@ -21,6 +21,13 @@ app.get('/api/users/error', (req, res) => {
   res.status(500).send('Status: Internal Server Error')
 });
 
+app.get('/api/users/latency', (req, res) => {
+  var segment = AWSXRay.getSegment();
+  console.log("The segment is " + segment);
+  await new Promise(resolve => setTimeout(resolve, 5000));
+  res.status(200).send('Request received')
+});
+
 app.get('/api/users/:userId', (req, res) => {
     var segment = AWSXRay.getSegment();
     console.log("The segment is " + segment);
