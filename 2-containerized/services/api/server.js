@@ -3,7 +3,7 @@ const db = require('./db.json');
 const AWSXRay = require('aws-xray-sdk');
 const app = express();
 const XrayURL = process.env.XRAY_URL;
-const sleep = (waitTimeInMs) => new Promise(resolve => setTimeout(resolve, waitTimeInMs));
+var sleep = require('system-sleep');
 
 AWSXRay.setDaemonAddress(XrayURL);
 app.use(AWSXRay.express.openSegment('Monolith'));
@@ -25,10 +25,8 @@ app.get('/api/users/error', (req, res) => {
 app.get('/api/users/latency', (req, res) => {
   var segment = AWSXRay.getSegment();
   console.log("The segment is " + segment);
-  sleep(10000).then(() => {
-  // This will execute 10 seconds from now
+  sleep(10*1000);
   res.status(200).send('Request received');
-  });
 });
 
 app.get('/api/users/:userId', (req, res) => {
