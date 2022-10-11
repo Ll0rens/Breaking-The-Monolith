@@ -3,7 +3,6 @@ const db = require('./db.json');
 const AWSXRay = require('aws-xray-sdk');
 const app = express();
 const XrayURL = process.env.XRAY_URL;
-var sleep = require('system-sleep');
 
 AWSXRay.setDaemonAddress(XrayURL);
 app.use(AWSXRay.express.openSegment('Monolith'));
@@ -20,13 +19,6 @@ app.get('/api/users/error', (req, res) => {
   var segment = AWSXRay.getSegment();
   console.log("The segment is " + segment);
   res.status(500).send('Status: Internal Server Error')
-});
-
-app.get('/api/users/latency', (req, res) => {
-  var segment = AWSXRay.getSegment();
-  console.log("The segment is " + segment);
-  sleep(10*1000);
-  res.status(200).send('Request received');
 });
 
 app.get('/api/users/:userId', (req, res) => {
