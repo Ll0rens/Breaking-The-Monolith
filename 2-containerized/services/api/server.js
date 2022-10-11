@@ -15,6 +15,12 @@ app.get('/api/users', (req, res) => {
   res.send(db.users);
 });
 
+app.get('/api/users/error', (req, res) => {
+  var segment = AWSXRay.getSegment();
+  console.log("The segment is " + segment);
+  res.status(500).send('Status: Internal Server Error')
+});
+
 app.get('/api/users/:userId', (req, res) => {
     var segment = AWSXRay.getSegment();
     console.log("The segment is " + segment);
