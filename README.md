@@ -13,3 +13,8 @@ export XRAY_URL="DNS_Name_Of_the_Xray_container"
 - [Part One: The base Node.js application](1-no-container/)
 - [Part Two: Moving the application to a container deployed using ECS](2-containerized/)
 - [Part Three: Breaking the monolith apart into microservices on ECS](3-microservices/)
+
+
+## 🙌 Acknowledgements
+
+The structure of this repo and README are inspired by the AWS workshop [`Break the Monolith`](https://aws.amazon.com/es/getting-started/hands-on/break-monolith-app-microservices-ecs-docker-ec2/)
